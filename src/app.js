@@ -1,8 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import './models/associations.js';
 import sequelize from './config/database.js';
 import userRoutes from './routes/userRoutes.js';
+import scanRoutes from './routes/scanRoutes.js';
+import auditRoutes from './routes/auditRoutes.js';
 
 dotenv.config();
 
@@ -14,6 +17,8 @@ app.use(express.json());
 
 // Routes
 app.use('/users', userRoutes);
+app.use('/scans', scanRoutes);
+app.use('/audits', auditRoutes);
 
 app.get('/', (req, res) => {
     res.send('API is running...');
