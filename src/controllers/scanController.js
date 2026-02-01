@@ -1,5 +1,7 @@
 import Scan from '../models/Scan.js';
 
+
+// Create a new scan
 export const createScan = async (req, res) => {
     try {
         const { type, url } = req.body;
@@ -10,6 +12,8 @@ export const createScan = async (req, res) => {
     }
 };
 
+
+// Get all scans
 export const getAllScans = async (req, res) => {
     try {
         const scans = await Scan.findAll();
@@ -19,6 +23,8 @@ export const getAllScans = async (req, res) => {
     }
 };
 
+
+// Get scans for a specific user
 export const getScansForUser = async (req, res) => {
     try {
         const scans = await Scan.findAll({ where: { userId: req.params.id } });
@@ -28,6 +34,8 @@ export const getScansForUser = async (req, res) => {
     }
 };
 
+
+// Get a scan by ID
 export const getScanById = async (req, res) => {
     try {
         const scan = await Scan.findByPk(req.params.id);
